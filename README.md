@@ -2,11 +2,9 @@
  
 **Whisper Library** Is library for transcribe sound to wav
 
-## Demo
- 
-
-
 [![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/powered.png)](https://www.youtube.com/@Global_Corporation)
+
+**Copyright (c) 2024 GLOBAL CORPORATION - GENERAL DEVELOPER**
 
 ## 📚️ Docs
 
@@ -98,3 +96,6 @@ void main(List<String> args) async {
   Original Idea and concept library + Developer Maintance this library
 2. [Ggerganov-whisper.cpp](https://github.com/ggerganov/whisper.cpp)
   ffi bridge main script so that this program can run
+
+
+**Copyright (c) 2024 GLOBAL CORPORATION - GENERAL DEVELOPER**
