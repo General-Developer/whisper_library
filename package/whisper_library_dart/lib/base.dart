@@ -37,7 +37,7 @@ import 'dart:async';
 import 'package:general_lib/dynamic_library/core.dart';
 
 /// Check Out: https://www.youtube.com/@GENERAL_DEV
-abstract class WhisperLibraryBaseCore extends GeneralLibraryDynamicLibraryBase {
+ abstract class WhisperLibraryBaseCore extends GeneralLibraryDynamicLibraryBase {
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   bool loadWhisperModel({
     String openVinoEncoderDevice = "CPU",
@@ -54,6 +54,7 @@ abstract class WhisperLibraryBaseCore extends GeneralLibraryDynamicLibraryBase {
     final int useCountThread = 0,
     final int useCountProccecors = 0,
   });
+  
 }
 
 /// Check Out: https://www.youtube.com/@GENERAL_DEV
