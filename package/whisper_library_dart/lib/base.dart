@@ -64,7 +64,8 @@ abstract class WhisperLibraryBase implements WhisperLibraryBaseCore {
   ///
   WhisperLibraryBase({
     String? libraryWhisperPath,
-  }) : libraryWhisperPath = libraryWhisperPath ?? getLibraryWhisperPathDefault();
+  }) : libraryWhisperPath =
+            libraryWhisperPath ?? getLibraryWhisperPathDefault();
 
   ///
   static String getLibraryWhisperPathDefault() {

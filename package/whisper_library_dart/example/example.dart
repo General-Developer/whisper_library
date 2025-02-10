@@ -39,8 +39,10 @@ import 'package:whisper_library_dart/whisper_library_dart.dart';
 
 void main(List<String> args) async {
   print("start");
+
   /// make sure you have downloaded model
-  final String whisperModelPath = "../../../../../big-data/ai/whisper-ggml/ggml-small.bin";
+  final String whisperModelPath =
+      "../../../../../big-data/ai/whisper-ggml/ggml-small.bin";
   final WhisperLibrary generalAiSpeechToText = WhisperLibrary(
     libraryWhisperPath: "../whisper_library_flutter/linux/libwhisper.so",
   );

@@ -38,11 +38,16 @@ import 'base.dart';
 
 ///
 class WhisperLibrary extends WhisperLibraryBase {
+  ///
   WhisperLibrary({
     super.libraryWhisperPath,
   });
   @override
-  bool loadWhisperModel({String openVinoEncoderDevice = "CPU", required String whisperModelPath, bool isUseGpu = false, int gpuDevice = 0}) {
+  bool loadWhisperModel(
+      {String openVinoEncoderDevice = "CPU",
+      required String whisperModelPath,
+      bool isUseGpu = false,
+      int gpuDevice = 0}) {
     // TODO: implement loadWhisperModel
     throw UnimplementedError();
   }

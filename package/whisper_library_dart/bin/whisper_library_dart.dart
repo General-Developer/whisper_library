@@ -34,7 +34,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 // import 'dart:async';
 // import 'dart:ffi';
-// import 'dart:io'; 
+// import 'dart:io';
 // import 'package:ffi/ffi.dart';
 // import 'package:general/core/general_core.dart';
 // import 'package:general/core/player/player_controller.dart';
@@ -115,7 +115,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 //     malloc.free(textNative);
 //     malloc.free(outputNative);
-    
+
 //     return file;
 //   }
 
