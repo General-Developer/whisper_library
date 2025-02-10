@@ -2,8 +2,11 @@
  
 **Whisper Library** Is library for transcribe sound to wav
 
-## Demo
- 
+[![](https://raw.githubusercontent.com/General-Developer/whisper_library/refs/heads/main/assets/demo_background.png)](https://youtu.be/drlqUwJEOg4)
+
+[![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/powered.png)](https://www.youtube.com/@Global_Corporation)
+
+**Copyright (c) 2024 GLOBAL CORPORATION - GENERAL DEVELOPER**
 
 ## 📚️ Docs
 
@@ -18,8 +21,8 @@
 2. [x] 📜️ **Standarization** Style Code
 3. [x] ⌨️ **Cli** (Terminal for help you use this library or create project)
 4. [x] 🔥️ **Api** (If you developer bot / userbot you can use this library without interact cli just add library and use 🚀️)
-5. [ ] 🧩️ **Customizable Extension** (if you want add extension so you can more speed up on development)
-6. [ ] ✨️ **Pretty Information** (user friendly for newbie)
+5. [x] 🧩️ **Customizable Extension** (if you want add extension so you can more speed up on development)
+6. [x] ✨️ **Pretty Information** (user friendly for newbie)
  
 ## ❔️ Fun Fact
 
@@ -29,6 +32,10 @@
  
 - **10-02-2025**
   Starting **Release Stable** With core Features
+
+## Resources
+
+1. [MODEL](https://huggingface.co/ggerganov/whisper.cpp/tree/main)
 
 ### 📥️ Install Library
 
@@ -91,3 +98,6 @@ void main(List<String> args) async {
   Original Idea and concept library + Developer Maintance this library
 2. [Ggerganov-whisper.cpp](https://github.com/ggerganov/whisper.cpp)
   ffi bridge main script so that this program can run
+
+
+**Copyright (c) 2024 GLOBAL CORPORATION - GENERAL DEVELOPER**
