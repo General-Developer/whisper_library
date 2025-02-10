@@ -1,0 +1,4 @@
+#!/bin/sh
+
+flutter build apk --release
+adb install -r -g build/app/outputs/flutter-apk/app-release.apk

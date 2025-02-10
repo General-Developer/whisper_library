@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dart compile exe examples/test.dart
+./examples/test.exe

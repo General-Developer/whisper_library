@@ -1,0 +1,1 @@
+library whisper_library_flutter;

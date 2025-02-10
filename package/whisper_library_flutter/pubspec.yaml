@@ -1,0 +1,50 @@
+name: 'whisper_library_flutter'
+description: ''
+version: '0.0.0'
+funding:
+  - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
+  - 'https://github.com/sponsors/general-developer'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+documentation: 'https://youtube.com/@azkadev'
+false_secrets:
+  - 'android/jniLibs'
+  - 'linux/'
+  - 'windows/'
+  - 'macos/'
+  - 'ios/'
+platforms:
+  android: null
+  ios: null
+  linux: null
+  macos: null
+  web: null
+  windows: null
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: '>=3.3.0'
+dependencies:
+  flutter:
+    sdk: 'flutter'
+dev_dependencies:
+  flutter_test:
+    sdk: 'flutter'
+  flutter_lints: '^5.0.0'
+flutter:
+  plugin:
+    platforms:
+      android:
+        ffiPlugin: true
+      ios:
+        ffiPlugin: true
+      linux:
+        ffiPlugin: true
+      macos:
+        ffiPlugin: true
+      windows:
+        ffiPlugin: true
+dependency_overrides:
+  pointycastle: '3.8.0'
+  mime: '^2.0.0'

@@ -1,0 +1,41 @@
+name: 'whisper_library'
+description: 'A sample command-line application.'
+version: '1.0.0'
+publish_to: 'none'
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: 'flutter'
+  cupertino_icons: '^1.0.6'
+  general_lib: '^0.0.63'
+  general_lib_flutter: '^0.0.41'
+  ffi: '^2.1.0'
+  crypto: '^3.0.3'
+  plugin_platform_interface: '^2.0.2'
+  path: '^1.9.0'
+dev_dependencies:
+  lints: '^5.0.0'
+  test: 'any'
+  ffigen: '^15.0.0'
+dependency_overrides:
+  pointycastle: '3.8.0'
+  mime: '^2.0.0'
+flutter:
+  uses-material-design: true
+funding:
+  - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
+  - 'https://github.com/sponsors/general-developer'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+documentation: 'https://youtube.com/@azkadev'
+ffigen:
+  name: 'WhisperLibrarySharedBindingsByGeneralDeveloper'
+  description: 'GeneralAiSpeechToTextLibraryWhisper Binding By General Corporation & Global Corporation & General Developer'
+  output: 'lib/ffi/bindings.dart'
+  ignore-source-errors: true
+  headers:
+    entry-points:
+      - '../../native_lib/lib/whisper.cpp/include/whisper.h'

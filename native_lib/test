@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Compile"
+BASE_COMPILE_DIRECTORY="build"
+BASE_WHISPER_CPP_COMPILE_DIRECTORY="$BASE_COMPILE_DIRECTORY/whisper.cpp"
+rm -rf $BASE_COMPILE_DIRECTORY
+cmake -B $BASE_COMPILE_DIRECTORY -DCMAKE_BUILD_TYPE=Release
+cmake --build $BASE_COMPILE_DIRECTORY --config Release -j $(nproc)

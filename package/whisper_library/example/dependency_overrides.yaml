@@ -1,0 +1,3 @@
+dependency_overrides:
+  whisper_library_flutter:
+    path: ../../whisper_library_flutter
