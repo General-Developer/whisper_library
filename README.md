@@ -2,6 +2,8 @@
  
 **Whisper Library** Is library for transcribe sound to wav
 
+[![]()](https://youtu.be/drlqUwJEOg4)
+
 [![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/powered.png)](https://www.youtube.com/@Global_Corporation)
 
 **Copyright (c) 2024 GLOBAL CORPORATION - GENERAL DEVELOPER**
