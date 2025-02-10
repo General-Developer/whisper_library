@@ -27,6 +27,7 @@
 ## ❔️ Fun Fact
 
 **This library 100%** use on every my create project (**App, Server, Bot, Userbot**)
+**This library 100%** support all models from [whisper.cpp](https://github.com/ggerganov/whisper.cpp) (depending on your device specs, if high then it can be up to turbo, but if low, just choose tiny/small)
  
 ## 📈️ Proggres
  
@@ -55,7 +56,7 @@ flutter pub add whisper_library_flutter
 
 Example Quickstart script minimal for insight you or make you use this library because very simple
 
-```dart 
+```dart
 
 import 'dart:io';
 import 'package:general_lib/general_lib.dart';
@@ -63,33 +64,36 @@ import 'package:whisper_library_dart/whisper_library_dart.dart';
 
 void main(List<String> args) async {
   print("start");
-  String whisperModelPath = "path_to_file/ggml-small.bin";
-  final WhisperLibrary generalAiSpeechToText = WhisperLibrary(
-    libraryWhisperPath: "path_to_file/libwhisper.so",
+
+  /// make sure you have downloaded model
+  final String whisperModelPath =
+      "../../../../../big-data/ai/whisper-ggml/ggml-small.bin";
+  final WhisperLibrary whisperLibrary = WhisperLibrary(
+    libraryWhisperPath: "../whisper_library_flutter/linux/libwhisper.so",
   );
-  await generalAiSpeechToText.ensureInitialized();
-  final isLoadedModel = generalAiSpeechToText.loadWhisperModel(
+  await whisperLibrary.ensureInitialized();
+  final isLoadedModel = whisperLibrary.loadWhisperModel(
     whisperModelPath: whisperModelPath,
   );
   if (isLoadedModel == false) {
     print("cant loaded");
     exit(1);
   }
-  File fileWav = File(
-    "path_to_file_sound/jfk.wav",
+  final File fileWav = File(
+    "../../native_lib/lib/whisper.cpp/samples/jfk.wav",
   );
   await Future.delayed(Duration(seconds: 2));
   DateTime dateTime = DateTime.now();
-  final result = await generalAiSpeechToText.transcribeToJson(
+  final result = await whisperLibrary.transcribeToJson(
     fileWav: fileWav,
     useCountProccecors: 1,
     useCountThread: (Platform.numberOfProcessors / 2).toInt(),
   );
   print("seconds: ${DateTime.now().difference(dateTime)}");
   result.printPretty();
-
   exit(0);
 }
+
 ```
 
 ## Reference
@@ -101,3 +105,15 @@ void main(List<String> args) async {
 
 
 **Copyright (c) 2024 GLOBAL CORPORATION - GENERAL DEVELOPER**
+
+
+## Example Project Use This Library
+
+
+1. [AZKA GRAM](https://github.com/azkadev/azkagram) / [Global GRAM](https://github.com/globalcorporation/global_gram_app)
+    
+ **Telegram Application** with **redesign** with new some features userbot and other **features which is not officially provided on Telegram** First this project open source but we closed it to **close source** because our program is easy to read and allows other people to edit the source code and then use it for criminal acts
+ 
+|                                                 CHAT PAGE                                                  |                                                SIGN UP PAGE                                                |                                                                                                  HOME PAGE |                                          GUIDE PAGE                                           |
+|:----------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------:|
+| ![](https://user-images.githubusercontent.com/82513502/205481759-b6815e2f-bd5d-4d72-9570-becd3829dd36.png) | ![](https://user-images.githubusercontent.com/82513502/173319331-9e96fbe7-3e66-44b2-8577-f6685d86a368.png) | ![](https://user-images.githubusercontent.com/82513502/173319541-19a60407-f410-4e95-8ac0-d0da2eaf2457.png) | ![](https://raw.githubusercontent.com/GLXCORP/glx_bot_app/main/screenshots/home_telegram.png) |
