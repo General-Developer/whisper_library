@@ -33,3 +33,14 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 library;
+
+import 'package:flutter/cupertino.dart';
+
+/// CHECK MORE: https://www.youtube.com/@GENERAL_DEV
+class WhisperLibraryFlutter {
+  /// CHECK MORE: https://www.youtube.com/@GENERAL_DEV
+
+  static void ensureInitialized() {
+    WidgetsFlutterBinding.ensureInitialized();
+  }
+}

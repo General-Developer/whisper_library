@@ -36,12 +36,14 @@ import 'dart:async';
 
 import 'base.dart';
 
-///
+/// Check Out: https://www.youtube.com/@GENERAL_DEV
 class WhisperLibrary extends WhisperLibraryBase {
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   WhisperLibrary({
     super.libraryWhisperPath,
   });
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   bool loadWhisperModel(
       {String openVinoEncoderDevice = "CPU",
@@ -52,6 +54,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     throw UnimplementedError();
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   Future<Map> transcribeToJson({
     required fileWav,
@@ -64,18 +67,25 @@ class WhisperLibrary extends WhisperLibraryBase {
     throw UnimplementedError();
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   void close() {
     // TODO: implement close
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   final bool _isCrash = false;
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   final bool _isDeviceSupport = false;
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   bool isCrash() {
     return _isCrash;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   bool isDeviceSupport() {
     if (_isCrash) {
@@ -84,11 +94,13 @@ class WhisperLibrary extends WhisperLibraryBase {
     return _isDeviceSupport;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   FutureOr<void> dispose() async {
     return;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   FutureOr<void> ensureInitialized() async {
     return;

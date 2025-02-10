@@ -36,9 +36,9 @@ import 'dart:async';
 
 import 'package:general_lib/dynamic_library/core.dart';
 
-///
+/// Check Out: https://www.youtube.com/@GENERAL_DEV
 abstract class WhisperLibraryBaseCore extends GeneralLibraryDynamicLibraryBase {
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   bool loadWhisperModel({
     String openVinoEncoderDevice = "CPU",
     required String whisperModelPath,
@@ -46,7 +46,7 @@ abstract class WhisperLibraryBaseCore extends GeneralLibraryDynamicLibraryBase {
     int gpuDevice = 0,
   });
 
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   Future<Map> transcribeToJson({
     required final dynamic fileWav,
     final bool isTranslate = false,
@@ -56,18 +56,18 @@ abstract class WhisperLibraryBaseCore extends GeneralLibraryDynamicLibraryBase {
   });
 }
 
-///
+/// Check Out: https://www.youtube.com/@GENERAL_DEV
 abstract class WhisperLibraryBase implements WhisperLibraryBaseCore {
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   final String libraryWhisperPath;
 
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   WhisperLibraryBase({
     String? libraryWhisperPath,
   }) : libraryWhisperPath =
             libraryWhisperPath ?? getLibraryWhisperPathDefault();
 
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static String getLibraryWhisperPathDefault() {
     return "libwhisper.so";
   }

@@ -44,11 +44,11 @@ import 'package:general_ml/utils/utils.dart';
 import 'base.dart';
 import 'ffi/bindings.dart';
 
-///
+/// Check Out: https://www.youtube.com/@GENERAL_DEV
 class WhisperLibrary extends WhisperLibraryBase {
   bool _isInIsolate = false;
 
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   WhisperLibrary({
     String? libraryWhisperPath,
   }) : super(
@@ -56,18 +56,29 @@ class WhisperLibrary extends WhisperLibraryBase {
               WhisperLibraryBase.getLibraryWhisperPathDefault(),
         );
 
-  ///
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static late final WhisperLibrarySharedBindingsByGeneralDeveloper
       _whisperLibraryDartSharedBindingsByGeneralDeveloper;
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static Pointer<whisper_context>? _whisperModelContext;
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static bool _isEnsureInitialized = false;
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static String _openVinoEncoderDevice = "CPU";
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static String _whisperModelPath = "";
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static bool _isUseGpu = false;
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static int _gpuDevice = 0;
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   Future<void> ensureInitialized() async {
     if (_isEnsureInitialized) {
@@ -89,13 +100,19 @@ class WhisperLibrary extends WhisperLibraryBase {
     _isEnsureInitialized = true;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   bool _isCrash = false;
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   bool _isDeviceSupport = false;
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   bool isCrash() {
     return _isCrash;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   bool isDeviceSupport() {
     if (_isCrash) {
@@ -104,6 +121,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     return _isDeviceSupport;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   bool loadWhisperModel({
     String openVinoEncoderDevice = "CPU",
@@ -157,6 +175,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     return true;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   Future<Map> transcribeToJson({
     required dynamic fileWav,
@@ -330,6 +349,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     return resultJson;
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   void close() {
     if (_isInIsolate == false) {
@@ -343,6 +363,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     }
   }
 
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   FutureOr<void> dispose() {
     close();
