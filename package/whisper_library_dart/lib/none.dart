@@ -32,4 +32,60 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-export "none.dart" if (dart.library.io) "io.dart";
+import 'dart:async';
+
+import 'base.dart';
+
+///
+class WhisperLibrary extends WhisperLibraryBase {
+  WhisperLibrary({
+    super.libraryWhisperPath,
+  });
+  @override
+  bool loadWhisperModel({String openVinoEncoderDevice = "CPU", required String whisperModelPath, bool isUseGpu = false, int gpuDevice = 0}) {
+    // TODO: implement loadWhisperModel
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Map> transcribeToJson({
+    required fileWav,
+    bool isTranslate = false,
+    String language = "auto",
+    int useCountThread = 0,
+    int useCountProccecors = 0,
+  }) {
+    // TODO: implement transcribeToJson
+    throw UnimplementedError();
+  }
+
+  @override
+  void close() {
+    // TODO: implement close
+  }
+
+  final bool _isCrash = false;
+  final bool _isDeviceSupport = false;
+  @override
+  bool isCrash() {
+    return _isCrash;
+  }
+
+  @override
+  bool isDeviceSupport() {
+    if (_isCrash) {
+      return false;
+    }
+    return _isDeviceSupport;
+  }
+
+  @override
+  FutureOr<void> dispose() async {
+    return;
+  }
+
+  @override
+  FutureOr<void> ensureInitialized() async {
+    return;
+  }
+}

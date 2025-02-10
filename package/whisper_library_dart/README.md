@@ -1,6 +1,6 @@
-# Whisper Library
+# Whisper Library Dart
  
-**Whisper Library** Is library for transcribe sound to wav
+**Whisper Library Dart** Is library for transcribe sound to wav
 
 ## Demo
  
@@ -35,13 +35,13 @@
 1. **Dart**
 
 ```bash
-dart pub add whisper_library_dart
+dart pub add whisper_library_dart_dart
 ```
 
 2. **Flutter**
 
 ```bash
-flutter pub add whisper_library_flutter
+flutter pub add whisper_library_dart_flutter
 ```
 
 ## 🚀️ Quick Start
@@ -52,7 +52,7 @@ Example Quickstart script minimal for insight you or make you use this library b
 
 import 'dart:io';
 import 'package:general_lib/general_lib.dart';
-import 'package:whisper_library_dart/whisper_library_dart.dart';
+import 'package:whisper_library_dart_dart/whisper_library_dart_dart.dart';
 
 void main(List<String> args) async {
   print("start");

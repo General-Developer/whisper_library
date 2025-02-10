@@ -4,6 +4,7 @@ analyzer:
     - test
     - dev
     - templates
+    - lib/ffi/bindings.dart
 linter:
   rules:
     - public_member_api_docs

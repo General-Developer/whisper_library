@@ -1,7 +1,0 @@
-# melos_managed_dependency_overrides: edge_dart_runtime
-dependency_overrides:
-  whisper_library:
-    path: ../whisper_library
-  whisper_library_scheme:
-    path: ../whisper_library_scheme
-

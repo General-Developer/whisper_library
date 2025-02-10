@@ -32,4 +32,42 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-export "none.dart" if (dart.library.io) "io.dart";
+import 'dart:async';
+
+import 'package:general_lib/dynamic_library/core.dart';
+
+///
+abstract class WhisperLibraryBaseCore extends GeneralLibraryDynamicLibraryBase {
+  ///
+  bool loadWhisperModel({
+    String openVinoEncoderDevice = "CPU",
+    required String whisperModelPath,
+    bool isUseGpu = false,
+    int gpuDevice = 0,
+  });
+
+  ///
+  Future<Map> transcribeToJson({
+    required final dynamic fileWav,
+    final bool isTranslate = false,
+    final String language = "auto",
+    final int useCountThread = 0,
+    final int useCountProccecors = 0,
+  });
+}
+
+///
+abstract class WhisperLibraryBase implements WhisperLibraryBaseCore {
+  ///
+  final String libraryWhisperPath;
+
+  ///
+  WhisperLibraryBase({
+    String? libraryWhisperPath,
+  }) : libraryWhisperPath = libraryWhisperPath ?? getLibraryWhisperPathDefault();
+
+  ///
+  static String getLibraryWhisperPathDefault() {
+    return "libwhisper.so";
+  }
+}

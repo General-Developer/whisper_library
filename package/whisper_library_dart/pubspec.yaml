@@ -1,15 +1,44 @@
 name: 'whisper_library_dart'
 description: 'Whisper Is Library for transcribe sound wav AKA Speech To Text Or Extract Text From Audio'
 version: '0.0.0'
-homepage: 'https://www.youtube.com/@general_dev'
-repository: 'https://github.com/General-Developer/whisper_library'
-issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
-documentation: 'https://www.youtube.com/@general_dev'
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: 'flutter'
+  cupertino_icons: '^1.0.6'
+  general_lib: '^0.0.64'
+  general_lib_flutter: '^0.0.41'
+  ffi: '^2.1.0'
+  crypto: '^3.0.3'
+  plugin_platform_interface: '^2.0.2'
+  path: '^1.9.0'
+  general_ml: ^0.0.1
+dev_dependencies:
+  lints: '^5.0.0'
+  test: 'any'
+  ffigen: '^15.0.0'
+dependency_overrides:
+  pointycastle: '3.8.0'
+  mime: '^2.0.0'
+flutter:
+  uses-material-design: true
 funding:
-  - 'https://github.com/sponsors/General-Developer'
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
   - 'https://github.com/sponsors/general-developer'
+homepage: 'https://www.youtube.com/@general_dev'
+repository: 'https://github.com/General-Developer/whisper_library_dart'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+documentation: 'https://www.youtube.com/@general_dev'
+ffigen:
+  name: 'WhisperLibrarySharedBindingsByGeneralDeveloper'
+  description: 'GeneralAiSpeechToTextLibraryWhisper Binding By General Corporation & Global Corporation & General Developer'
+  output: 'lib/ffi/bindings.dart'
+  ignore-source-errors: true
+  headers:
+    entry-points:
+      - '../../native_lib/lib/whisper.cpp/include/whisper.h'
 platforms:
   android: null
   ios: null
@@ -17,16 +46,3 @@ platforms:
   macos: null
   web: null
   windows: null
-environment:
-  sdk: '>=3.6.0 <4.0.0'
-dependencies:
-  path: '^1.9.0'
-  general_lib: '^0.0.64'
-dev_dependencies:
-  lints: '^5.0.0'
-  test: 'any'
-executables:
-  whisper_library: 'whisper_library'
-dependency_overrides:
-  pointycastle: '3.8.0'
-  mime: '^2.0.0'
