@@ -54,7 +54,6 @@ void main(List<String> args) async {
   final File fileWav = File(
     "../../native_lib/lib/whisper.cpp/samples/jfk.wav",
   );
-
   await Future.delayed(Duration(seconds: 2));
   DateTime dateTime = DateTime.now();
   final result = await generalAiSpeechToText.transcribeToJson(
