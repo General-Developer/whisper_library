@@ -4,8 +4,6 @@ project(
   general_developer_whisper_shared_library
 )
 
-
-
 set(WHISPER_LIBRARY_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/whisper.cpp")
 
 if(ANDROID)

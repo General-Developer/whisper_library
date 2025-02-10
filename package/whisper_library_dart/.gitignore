@@ -28,3 +28,10 @@ bin/dev.dart
 *.so
 
 *.so.*
+
+
+*.so
+*.so*
+*.dll
+
+*.dylib

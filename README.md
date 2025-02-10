@@ -5,6 +5,9 @@
 ## Demo
  
 
+
+[![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/powered.png)](https://www.youtube.com/@Global_Corporation)
+
 ## 📚️ Docs
 
 1. [Documentation](https://youtube.com/@GENERAL_DEV)
@@ -18,8 +21,8 @@
 2. [x] 📜️ **Standarization** Style Code
 3. [x] ⌨️ **Cli** (Terminal for help you use this library or create project)
 4. [x] 🔥️ **Api** (If you developer bot / userbot you can use this library without interact cli just add library and use 🚀️)
-5. [ ] 🧩️ **Customizable Extension** (if you want add extension so you can more speed up on development)
-6. [ ] ✨️ **Pretty Information** (user friendly for newbie)
+5. [x] 🧩️ **Customizable Extension** (if you want add extension so you can more speed up on development)
+6. [x] ✨️ **Pretty Information** (user friendly for newbie)
  
 ## ❔️ Fun Fact
 
@@ -29,6 +32,10 @@
  
 - **10-02-2025**
   Starting **Release Stable** With core Features
+
+## Resources
+
+1. [MODEL](https://huggingface.co/ggerganov/whisper.cpp/tree/main)
 
 ### 📥️ Install Library
 

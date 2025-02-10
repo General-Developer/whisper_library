@@ -25,3 +25,5 @@ packagex-compile-debug
 build-*/
 
 prebuilt
+
+compile
