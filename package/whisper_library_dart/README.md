@@ -1,16 +1,16 @@
-# Package Full Template
+# Whisper Library
  
-**Package Full Template** this open source project is free 
+**Whisper Library** Is library for transcribe sound to wav
 
 ## Demo
  
 
 ## 📚️ Docs
 
-1. [Documentation](/docs/)
-2. [Youtube](https://youtube.com/)
-3. [Telegram Support Group](https://t.me/)
-4. [Contact Developer](https://github.com/) (check social media or readme profile github)
+1. [Documentation](https://youtube.com/@GENERAL_DEV)
+2. [Youtube](https://youtube.com/@GENERAL_DEV)
+3. [Telegram Support Group](https://t.me/DEVELOPER_GLOBAL_PUBLIC)
+4. [Contact Developer](https://github.com/General-Developer) (check social media or readme profile github)
 
 ## 🔖️ Features
 
@@ -27,19 +27,15 @@
  
 ## 📈️ Proggres
  
-- **2024-04-20**
+- **10-02-2025**
   Starting **Release Stable** With core Features
-- **2024-04-19**
-  Starting create simple library **Package Full Template**
-- **2024-04-18**
-  Think to standarization server so i can create project easy, and not only project i can add feature to my ai so my ai can create server and test direct without use rest-api, talk, searching internet or use any api 
 
 ### 📥️ Install Library
 
 1. **Dart**
 
 ```bash
-dart pub add whisper_library
+dart pub add whisper_library_dart
 ```
 
 2. **Flutter**
@@ -48,36 +44,43 @@ dart pub add whisper_library
 flutter pub add whisper_library_flutter
 ```
 
-### 💻️ Install Cli
-
-- from pub
-
-```bash
-
-```
-
-- from github
-
 ## 🚀️ Quick Start
 
-Example Quickstart script minimal for insight you or make you use this library because very simple 
-
-### Api
-
-### Cli
-
-### Edge
-
-if you want deploy server rest api on Severless functions Like (Supabase, Cloud Flare, Deno Deploy, Vercel, Netlify)
-
-```dart
-
-```
-
-
-### Native
-
-if you want deploy on device or server or vps, or flutter app try this script
+Example Quickstart script minimal for insight you or make you use this library because very simple
 
 ```dart 
+
+import 'dart:io';
+import 'package:general_lib/general_lib.dart';
+import 'package:whisper_library/whisper_library.dart';
+
+void main(List<String> args) async {
+  print("start");
+  String whisperModelPath = "path_to_file/ggml-small.bin";
+  final WhisperLibrary generalAiSpeechToText = WhisperLibrary(
+    libraryWhisperPath: "path_to_file/libwhisper.so",
+  );
+  await generalAiSpeechToText.ensureInitialized();
+  final isLoadedModel = generalAiSpeechToText.loadWhisperModel(
+    whisperModelPath: whisperModelPath,
+  );
+  if (isLoadedModel == false) {
+    print("cant loaded");
+    exit(1);
+  }
+  File fileWav = File(
+    "path_to_file_sound/jfk.wav",
+  );
+  await Future.delayed(Duration(seconds: 2));
+  DateTime dateTime = DateTime.now();
+  final result = await generalAiSpeechToText.transcribeToJson(
+    fileWav: fileWav,
+    useCountProccecors: 1,
+    useCountThread: (Platform.numberOfProcessors / 2).toInt(),
+  );
+  print("seconds: ${DateTime.now().difference(dateTime)}");
+  result.printPretty();
+
+  exit(0);
+}
 ```

@@ -1,92 +1,86 @@
-# whisper_library_flutter
+# Whisper Library
+ 
+**Whisper Library** Is library for transcribe sound to wav
 
-A new Flutter FFI plugin project.
+## Demo
+ 
 
-## Getting Started
+## 📚️ Docs
 
-This project is a starting point for a Flutter
-[FFI plugin](https://flutter.dev/to/ffi-package),
-a specialized package that includes native code directly invoked with Dart FFI.
+1. [Documentation](https://youtube.com/@GENERAL_DEV)
+2. [Youtube](https://youtube.com/@GENERAL_DEV)
+3. [Telegram Support Group](https://t.me/DEVELOPER_GLOBAL_PUBLIC)
+4. [Contact Developer](https://github.com/General-Developer) (check social media or readme profile github)
 
-## Project structure
+## 🔖️ Features
 
-This template uses the following structure:
+1. [x] 📱️ **Cross Platform** support (Device, Edge Severless functions)
+2. [x] 📜️ **Standarization** Style Code
+3. [x] ⌨️ **Cli** (Terminal for help you use this library or create project)
+4. [x] 🔥️ **Api** (If you developer bot / userbot you can use this library without interact cli just add library and use 🚀️)
+5. [ ] 🧩️ **Customizable Extension** (if you want add extension so you can more speed up on development)
+6. [ ] ✨️ **Pretty Information** (user friendly for newbie)
+ 
+## ❔️ Fun Fact
 
-* `src`: Contains the native source code, and a CmakeFile.txt file for building
-  that source code into a dynamic library.
+**This library 100%** use on every my create project (**App, Server, Bot, Userbot**)
+ 
+## 📈️ Proggres
+ 
+- **10-02-2025**
+  Starting **Release Stable** With core Features
 
-* `lib`: Contains the Dart code that defines the API of the plugin, and which
-  calls into the native code using `dart:ffi`.
+### 📥️ Install Library
 
-* platform folders (`android`, `ios`, `windows`, etc.): Contains the build files
-  for building and bundling the native code library with the platform application.
+1. **Dart**
 
-## Building and bundling native code
-
-The `pubspec.yaml` specifies FFI plugins as follows:
-
-```yaml
-  plugin:
-    platforms:
-      some_platform:
-        ffiPlugin: true
+```bash
+dart pub add whisper_library_dart
 ```
 
-This configuration invokes the native build for the various target platforms
-and bundles the binaries in Flutter applications using these FFI plugins.
+2. **Flutter**
 
-This can be combined with dartPluginClass, such as when FFI is used for the
-implementation of one platform in a federated plugin:
-
-```yaml
-  plugin:
-    implements: some_other_plugin
-    platforms:
-      some_platform:
-        dartPluginClass: SomeClass
-        ffiPlugin: true
+```bash
+flutter pub add whisper_library_flutter
 ```
 
-A plugin can have both FFI and method channels:
+## 🚀️ Quick Start
 
-```yaml
-  plugin:
-    platforms:
-      some_platform:
-        pluginClass: SomeName
-        ffiPlugin: true
+Example Quickstart script minimal for insight you or make you use this library because very simple
+
+```dart 
+
+import 'dart:io';
+import 'package:general_lib/general_lib.dart';
+import 'package:whisper_library/whisper_library.dart';
+
+void main(List<String> args) async {
+  print("start");
+  String whisperModelPath = "path_to_file/ggml-small.bin";
+  final WhisperLibrary generalAiSpeechToText = WhisperLibrary(
+    libraryWhisperPath: "path_to_file/libwhisper.so",
+  );
+  await generalAiSpeechToText.ensureInitialized();
+  final isLoadedModel = generalAiSpeechToText.loadWhisperModel(
+    whisperModelPath: whisperModelPath,
+  );
+  if (isLoadedModel == false) {
+    print("cant loaded");
+    exit(1);
+  }
+  File fileWav = File(
+    "path_to_file_sound/jfk.wav",
+  );
+  await Future.delayed(Duration(seconds: 2));
+  DateTime dateTime = DateTime.now();
+  final result = await generalAiSpeechToText.transcribeToJson(
+    fileWav: fileWav,
+    useCountProccecors: 1,
+    useCountThread: (Platform.numberOfProcessors / 2).toInt(),
+  );
+  print("seconds: ${DateTime.now().difference(dateTime)}");
+  result.printPretty();
+
+  exit(0);
+}
 ```
-
-The native build systems that are invoked by FFI (and method channel) plugins are:
-
-* For Android: Gradle, which invokes the Android NDK for native builds.
-  * See the documentation in android/build.gradle.
-* For iOS and MacOS: Xcode, via CocoaPods.
-  * See the documentation in ios/whisper_library_flutter.podspec.
-  * See the documentation in macos/whisper_library_flutter.podspec.
-* For Linux and Windows: CMake.
-  * See the documentation in linux/CMakeLists.txt.
-  * See the documentation in windows/CMakeLists.txt.
-
-## Binding to native code
-
-To use the native code, bindings in Dart are needed.
-To avoid writing these by hand, they are generated from the header file
-(`src/whisper_library_flutter.h`) by `package:ffigen`.
-Regenerate the bindings by running `dart run ffigen --config ffigen.yaml`.
-
-## Invoking native code
-
-Very short-running native functions can be directly invoked from any isolate.
-For example, see `sum` in `lib/whisper_library_flutter.dart`.
-
-Longer-running functions should be invoked on a helper isolate to avoid
-dropping frames in Flutter applications.
-For example, see `sumAsync` in `lib/whisper_library_flutter.dart`.
-
-## Flutter help
-
-For help getting started with Flutter, view our
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-

@@ -47,22 +47,16 @@ Future<void> pubspecUpdate({
   required List<String> librarys,
 }) async {
   if (filePubspec.existsSync()) {
-    Map yaml_code =
-        (yaml.loadYaml(filePubspec.readAsStringSync(), recover: true) as Map);
+    Map yaml_code = (yaml.loadYaml(filePubspec.readAsStringSync(), recover: true) as Map);
     Map yaml_code_clone = yaml_code.clone();
 
     yaml_code_clone.addAll({
-      "description":
-          "whisper_library is program for help you, booster up your projects significants",
+      "description": "Whisper Is Library for transcribe sound wav AKA Speech To Text Or Extract Text From Audio",
       "version": version_package,
-      "repository":
-          "https://github.com/{main_username_owner}/whisper_library",
-      "homepage":
-          "https://github.com/{main_username_owner}/whisper_library",
-      "issue_tracker":
-          "https://github.com/{main_username_owner}/whisper_library/issues",
-      "documentation":
-          "https://github.com/{main_username_owner}/whisper_library/tree/main/docs",
+      "repository": "https://github.com/General-Developer/whisper_library",
+      "homepage": "https://www.youtube.com/@general_dev",
+      "issue_tracker": "https://t.me/DEVELOPER_GLOBAL_PUBLIC",
+      "documentation": "https://www.youtube.com/@general_dev",
       "platforms": {
         "android": null,
         "ios": null,
@@ -87,32 +81,27 @@ void main(List<String> args) async {
 
   File file_pubspec_home = File(path.join(directory_home.path, "pubspec.yaml"));
   await pubspecUpdate(filePubspec: file_pubspec_home, librarys: []);
-  Directory directory_packages =
-      Directory(path.join(directory.path, "package"));
+  Directory directory_packages = Directory(path.join(directory.path, "package"));
 
   if (!directory_packages.existsSync()) {
     print("Directory Packages Not Found: ${directory_packages.path}");
     exit(1);
   }
 
-  List<FileSystemEntity> file_system_entity_packages =
-      directory_packages.listSync();
+  List<FileSystemEntity> file_system_entity_packages = directory_packages.listSync();
 
-  List<String> librarys =
-      file_system_entity_packages.map((e) => path.basename(e.path)).toList();
+  List<String> librarys = file_system_entity_packages.map((e) => path.basename(e.path)).toList();
 
   for (var i = 0; i < file_system_entity_packages.length; i++) {
     FileSystemEntity fileSystemEntity = file_system_entity_packages[i];
     if (fileSystemEntity is Directory) {
-      File file_changelog =
-          File(path.join(fileSystemEntity.path, "CHANGELOG.md"));
+      File file_changelog = File(path.join(fileSystemEntity.path, "CHANGELOG.md"));
       await file_changelog.writeAsString('''
 ## ${version_package}
 
 - Update Topics.
 ''');
-      File file_pubspec =
-          File(path.join(fileSystemEntity.path, "pubspec.yaml"));
+      File file_pubspec = File(path.join(fileSystemEntity.path, "pubspec.yaml"));
 
       await pubspecUpdate(filePubspec: file_pubspec, librarys: librarys);
     }
@@ -120,4 +109,3 @@ void main(List<String> args) async {
 
   print("Finished");
 }
-

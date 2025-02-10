@@ -1,7 +1,6 @@
 name: 'whisper_library'
-description: 'A sample command-line application.'
-version: '1.0.0'
-publish_to: 'none'
+description: 'Whisper Is Library for transcribe sound wav AKA Speech To Text Or Extract Text From Audio'
+version: '0.0.0'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
@@ -27,10 +26,10 @@ funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
   - 'https://github.com/sponsors/general-developer'
-homepage: 'https://youtube.com/@azkadev'
-repository: 'https://github.com/azkadev/general_framework'
+homepage: 'https://www.youtube.com/@general_dev'
+repository: 'https://github.com/General-Developer/whisper_library'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
-documentation: 'https://youtube.com/@azkadev'
+documentation: 'https://www.youtube.com/@general_dev'
 ffigen:
   name: 'WhisperLibrarySharedBindingsByGeneralDeveloper'
   description: 'GeneralAiSpeechToTextLibraryWhisper Binding By General Corporation & Global Corporation & General Developer'
@@ -39,3 +38,10 @@ ffigen:
   headers:
     entry-points:
       - '../../native_lib/lib/whisper.cpp/include/whisper.h'
+platforms:
+  android: null
+  ios: null
+  linux: null
+  macos: null
+  web: null
+  windows: null
