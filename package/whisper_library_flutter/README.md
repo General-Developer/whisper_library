@@ -84,3 +84,10 @@ void main(List<String> args) async {
   exit(0);
 }
 ```
+
+## Reference
+
+1. [Azkadev-Whisper](https://github.com/azkadev/whisper)
+  Original Idea and concept library + Developer Maintance this library
+2. [Ggerganov-whisper.cpp](https://github.com/ggerganov/whisper.cpp)
+  ffi bridge main script so that this program can run
