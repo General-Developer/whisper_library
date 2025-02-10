@@ -43,11 +43,11 @@ void main(List<String> args) async {
   /// make sure you have downloaded model
   final String whisperModelPath =
       "../../../../../big-data/ai/whisper-ggml/ggml-small.bin";
-  final WhisperLibrary generalAiSpeechToText = WhisperLibrary(
+  final WhisperLibrary whisperLibrary = WhisperLibrary(
     libraryWhisperPath: "../whisper_library_flutter/linux/libwhisper.so",
   );
-  await generalAiSpeechToText.ensureInitialized();
-  final isLoadedModel = generalAiSpeechToText.loadWhisperModel(
+  await whisperLibrary.ensureInitialized();
+  final isLoadedModel = whisperLibrary.loadWhisperModel(
     whisperModelPath: whisperModelPath,
   );
   if (isLoadedModel == false) {
@@ -59,7 +59,7 @@ void main(List<String> args) async {
   );
   await Future.delayed(Duration(seconds: 2));
   DateTime dateTime = DateTime.now();
-  final result = await generalAiSpeechToText.transcribeToJson(
+  final result = await whisperLibrary.transcribeToJson(
     fileWav: fileWav,
     useCountProccecors: 1,
     useCountThread: (Platform.numberOfProcessors / 2).toInt(),

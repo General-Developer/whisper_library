@@ -28,7 +28,7 @@ funding:
   - 'https://github.com/sponsors/generalfoss'
   - 'https://github.com/sponsors/general-developer'
 homepage: 'https://www.youtube.com/@general_dev'
-repository: 'https://github.com/General-Developer/whisper_library_dart'
+repository: 'https://github.com/General-Developer/whisper_library'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 documentation: 'https://www.youtube.com/@general_dev'
 ffigen:
