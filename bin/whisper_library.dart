@@ -39,7 +39,7 @@ import 'dart:isolate';
 
 void main(List<String> arguments) async {
   print('Hello world:');
-  
+
   await Isolate.spawnUri(
     Uri.dataFromString(
       """
@@ -53,7 +53,6 @@ void main() async {
     [""],
     null,
   );
-
 
   exit(0);
 }

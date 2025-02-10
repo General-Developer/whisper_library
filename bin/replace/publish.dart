@@ -75,4 +75,3 @@ dart pub publish -f
 
   exit(0);
 }
-
