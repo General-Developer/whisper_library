@@ -1,6 +1,6 @@
-# Package Full Template
+# Whisper Library
  
-**Package Full Template** this open source project is free 
+**Whisper Library** Is library for transcribe sound to wav
 
 ## Demo
  

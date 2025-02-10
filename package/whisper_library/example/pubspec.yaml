@@ -8,7 +8,7 @@ dependencies:
   flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.8'
-  general_lib: '^0.0.63'
+  general_lib: '^0.0.64'
   general_lib_flutter: '^0.0.41'
   system_information: '^0.0.10'
   system_information_flutter: '^0.0.10'
