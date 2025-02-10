@@ -52,7 +52,7 @@ Example Quickstart script minimal for insight you or make you use this library b
 
 import 'dart:io';
 import 'package:general_lib/general_lib.dart';
-import 'package:whisper_library/whisper_library.dart';
+import 'package:whisper_library_dart/whisper_library_dart.dart';
 
 void main(List<String> args) async {
   print("start");
