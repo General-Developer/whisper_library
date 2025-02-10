@@ -1,6 +1,6 @@
 name: 'whisper_library_dart'
 description: 'Whisper Is Library for transcribe sound wav AKA Speech To Text Or Extract Text From Audio'
-version: '0.0.3'
+version: '0.0.4'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
