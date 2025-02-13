@@ -173,10 +173,10 @@ packages:
     dependency: "direct main"
     description:
       name: general_lib
-      sha256: ed9f11661e992cda08817809861370747e2156960166768c72caed8cd76d74ab
+      sha256: "39952559bd55cc6c0a17dab5f9a406e7e671d84244d423f1b6a95fb7a2dc1478"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.64"
+    version: "0.0.65"
   general_ml:
     dependency: "direct main"
     description:

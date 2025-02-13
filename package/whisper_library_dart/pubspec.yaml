@@ -41,3 +41,5 @@ platforms:
   macos: null
   web: null
   windows: null
+project:
+  type: ''
