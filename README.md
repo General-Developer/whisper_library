@@ -26,8 +26,9 @@
  
 ## ❔️ Fun Fact
 
-**This library 100%** use on every my create project (**App, Server, Bot, Userbot**)
-**This library 100%** support all models from [whisper.cpp](https://github.com/ggerganov/whisper.cpp) (depending on your device specs, if high then it can be up to turbo, but if low, just choose tiny/small)
+- **This library 100%** use on every my create project (**App, Server, Bot, Userbot**)
+
+- **This library 100%** support all models from [whisper.cpp](https://github.com/ggerganov/whisper.cpp) (depending on your device specs, if high then it can be up to turbo, but if low, just choose tiny/small)
  
 ## 📈️ Proggres
  
@@ -49,7 +50,7 @@ dart pub add whisper_library_dart
 2. **Flutter**
 
 ```bash
-flutter pub add whisper_library_flutter
+flutter pub add whisper_library_flutter ggml_library_flutter
 ```
 
 ## 🚀️ Quick Start
