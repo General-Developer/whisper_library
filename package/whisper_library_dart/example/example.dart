@@ -42,7 +42,7 @@ void main(List<String> args) async {
 
   /// make sure you have downloaded model
   final String whisperModelPath =
-      "../../../../../big-data/ai/whisper-ggml/ggml-small.bin";
+      "../../../../../big-data/whisper-ggml/ggml-small.bin";
   final WhisperLibrary whisperLibrary = WhisperLibrary(
     libraryWhisperPath: "../whisper_library_flutter/linux/libwhisper.so",
   );

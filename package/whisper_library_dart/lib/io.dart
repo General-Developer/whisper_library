@@ -61,7 +61,7 @@ class WhisperLibrary extends WhisperLibraryBase {
       _whisperLibraryDartSharedBindingsByGeneralDeveloper;
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
-  static Pointer<whisper_context>? _whisperModelContext;
+  static Pointer<whisper_context> _whisperModelContext = nullptr;
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static bool _isEnsureInitialized = false;
@@ -121,6 +121,12 @@ class WhisperLibrary extends WhisperLibraryBase {
     return _isDeviceSupport;
   }
 
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  static void ggmlLogCallbackFunction(
+      int level, Pointer<Char> text, Pointer<Void> userData) {
+    // print(text.cast<Utf8>().toDartString());
+  }
+
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   bool loadWhisperModel({
@@ -145,12 +151,24 @@ class WhisperLibrary extends WhisperLibraryBase {
         WhisperLibrary._whisperModelPath.toNativeUtf8().cast<Char>();
     {
       final whisperModelContext = WhisperLibrary._whisperModelContext;
-      if (whisperModelContext != null) {
+      if (whisperModelContext != nullptr) {
         /// release memory
         _whisperLibraryDartSharedBindingsByGeneralDeveloper
             .whisper_free(whisperModelContext);
       }
     }
+
+    {
+      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
+          .whisper_log_set(Pointer.fromFunction(ggmlLogCallbackFunction),
+              "log".toNativeUtf8().cast<Void>());
+      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
+          .ggml_log_set(Pointer.fromFunction(ggmlLogCallbackFunction),
+              "log".toNativeUtf8().cast<Void>());
+    }
+
+    WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
+        .ggml_backend_load_all();
 
     final cparams = _whisperLibraryDartSharedBindingsByGeneralDeveloper
         .whisper_context_default_params();
@@ -233,7 +251,7 @@ class WhisperLibrary extends WhisperLibraryBase {
       });
     }
     final whisperModelContext = WhisperLibrary._whisperModelContext;
-    if (whisperModelContext == null) {
+    if (whisperModelContext == nullptr) {
       return {
         "@type": "error",
       };
@@ -357,7 +375,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     }
 
     final whisperModelContext = WhisperLibrary._whisperModelContext;
-    if (whisperModelContext != null) {
+    if (whisperModelContext != nullptr) {
       WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
           .whisper_free(whisperModelContext);
     }

@@ -30,10 +30,14 @@ ffigen:
   name: 'WhisperLibrarySharedBindingsByGeneralDeveloper'
   description: 'GeneralAiSpeechToTextLibraryWhisper Binding By General Corporation & Global Corporation & General Developer'
   output: 'lib/ffi/bindings.dart'
-  ignore-source-errors: true
   headers:
     entry-points:
       - '../../native_lib/lib/whisper.cpp/include/whisper.h'
+      - '../../native_lib/lib/ggml/include/ggml.h'
+      - '../../native_lib/lib/ggml/include/ggml-cpu.h'
+      - '../../native_lib/lib/ggml/include/ggml-backend.h'
+  compiler-opts:
+    - '-I/usr/lib/clang/19.1.7/include'
 platforms:
   android: null
   ios: null
