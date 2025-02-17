@@ -68,12 +68,6 @@ class WhisperLibrary extends WhisperLibraryBase {
   }
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
-  @override
-  void close() {
-    // TODO: implement close
-  }
-
-  /// Check Out: https://www.youtube.com/@GENERAL_DEV
   final bool _isCrash = false;
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
@@ -103,6 +97,12 @@ class WhisperLibrary extends WhisperLibraryBase {
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
   FutureOr<void> ensureInitialized() async {
+    return;
+  }
+
+  /// Check Out: https://www.youtube.com/@GENERAL_DEV
+  @override
+  FutureOr<void> initialized() async {
     return;
   }
 }
