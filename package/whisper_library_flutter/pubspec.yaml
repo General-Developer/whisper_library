@@ -1,6 +1,6 @@
 name: 'whisper_library_flutter'
 description: 'Whisper Is Library for transcribe sound wav AKA Speech To Text Or Extract Text From Audio'
-version: '0.0.6'
+version: '0.0.7'
 funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
@@ -15,7 +15,6 @@ false_secrets:
   - 'windows/'
   - 'macos/'
   - 'ios/'
-
 topics:
   - 'ggml'
   - 'artificial-intelligence'
