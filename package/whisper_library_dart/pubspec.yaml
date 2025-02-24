@@ -17,7 +17,7 @@ dependencies:
   general_ml: '^0.0.2'
   ffi_universe: '^0.0.4'
 dev_dependencies:
-  lints: '^5.1.1'
+  lints: '^5.0.0'
   test: 'any'
   ffigen: '^15.0.0'
 dependency_overrides:
