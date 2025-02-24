@@ -130,7 +130,7 @@ packages:
     source: hosted
     version: "2.1.3"
   ffi_universe:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: ffi_universe
       sha256: "9afe9eab610670021843c8b8c9bcd2a212840dfcf312bac18f4c503092b286a9"
@@ -173,10 +173,10 @@ packages:
     dependency: "direct main"
     description:
       name: general_lib
-      sha256: "39952559bd55cc6c0a17dab5f9a406e7e671d84244d423f1b6a95fb7a2dc1478"
+      sha256: "5618d8320485471f04d61c14c67b2c7044d77fae95acfb92375348af78baffd8"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.65"
+    version: "0.0.66"
   general_ml:
     dependency: "direct main"
     description:
