@@ -106,7 +106,7 @@ packages:
     source: hosted
     version: "1.11.1"
   crypto:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: crypto
       sha256: "1e445881f28f22d6140f181e07737b22f1e099a5e1ff94b0af2f9e4a463f4855"
@@ -133,10 +133,10 @@ packages:
     dependency: "direct main"
     description:
       name: ffi_universe
-      sha256: "9afe9eab610670021843c8b8c9bcd2a212840dfcf312bac18f4c503092b286a9"
+      sha256: "1ef6d22cd011198a8f3c91ffcaf843916278f7edc3e9ffaca6a918c26b3f4c8e"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.4"
   ffigen:
     dependency: "direct dev"
     description:
@@ -181,10 +181,10 @@ packages:
     dependency: "direct main"
     description:
       name: general_ml
-      sha256: d47f7637574b8bf239a3f4efc35d04533489a3c340b6dd5f6179ff041601dbc6
+      sha256: ed248ca182e908b3d38176f01baac553f7011594a19e832222cedc7728343f8d
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.2"
   glob:
     dependency: transitive
     description:
@@ -578,4 +578,4 @@ packages:
     source: hosted
     version: "0.2.3"
 sdks:
-  dart: ">=3.6.0 <4.0.0"
+  dart: ">=3.7.0 <4.0.0"

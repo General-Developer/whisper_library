@@ -33,13 +33,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:isolate';
 import 'dart:typed_data';
 
-import 'package:ffi/ffi.dart';
-import 'package:ffi_universe/ffi_universe_core.dart';
+// import 'package:ffi_universe/ffi/wasm/wasm.dart';
+import 'package:ffi_universe/ffi_universe.dart';
 import 'package:general_ml/utils/utils.dart';
 
 import 'base.dart';
@@ -50,11 +49,7 @@ class WhisperLibrary extends WhisperLibraryBase {
   bool _isInIsolate = false;
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
-  WhisperLibrary({
-    String? libraryWhisperPath,
-  }) : super(
-          libraryWhisperPath: libraryWhisperPath ?? WhisperLibraryBase.getLibraryWhisperPathDefault(),
-        );
+  WhisperLibrary({String? libraryWhisperPath}) : super(libraryWhisperPath: libraryWhisperPath ?? WhisperLibraryBase.getLibraryWhisperPathDefault());
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static late final WhisperLibrarySharedBindingsByGeneralDeveloper _whisperLibraryDartSharedBindingsByGeneralDeveloper;
@@ -83,12 +78,8 @@ class WhisperLibrary extends WhisperLibraryBase {
     if (_isEnsureInitialized) {
       return;
     }
-    try { 
-      _whisperLibraryDartSharedBindingsByGeneralDeveloper = WhisperLibrarySharedBindingsByGeneralDeveloper(
-        await FFIUniverse.open(
-          path: libraryWhisperPath,
-        ),
-      );
+    try {
+      _whisperLibraryDartSharedBindingsByGeneralDeveloper = WhisperLibrarySharedBindingsByGeneralDeveloper(await FFIUniverse.open(path: libraryWhisperPath));
       _isDeviceSupport = true;
     } catch (e) {
       print(e);
@@ -126,12 +117,7 @@ class WhisperLibrary extends WhisperLibraryBase {
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
-  bool loadWhisperModel({
-    String openVinoEncoderDevice = "CPU",
-    required String whisperModelPath,
-    bool isUseGpu = false,
-    int gpuDevice = 0,
-  }) {
+  bool loadWhisperModel({String openVinoEncoderDevice = "CPU", required String whisperModelPath, bool isUseGpu = false, int gpuDevice = 0}) {
     {
       WhisperLibrary._openVinoEncoderDevice = openVinoEncoderDevice;
       WhisperLibrary._whisperModelPath = whisperModelPath;
@@ -177,13 +163,7 @@ class WhisperLibrary extends WhisperLibraryBase {
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
-  Future<Map> transcribeToJson({
-    required dynamic fileWav,
-    bool isTranslate = false,
-    String language = "auto",
-    int useCountThread = 0,
-    int useCountProccecors = 0,
-  }) async {
+  Future<Map> transcribeToJson({required dynamic fileWav, bool isTranslate = false, String language = "auto", int useCountThread = 0, int useCountProccecors = 0}) async {
     if (isDeviceSupport() == false || isCrash()) {
       return {"@type": "error", "message": "not_support"};
     }
@@ -207,17 +187,10 @@ class WhisperLibrary extends WhisperLibraryBase {
       final bool isUseGpu = WhisperLibrary._isUseGpu;
       final int gpuDevice = WhisperLibrary._gpuDevice;
       return await Isolate.run(() async {
-        final WhisperLibrary generalAiSpeechToText = WhisperLibrary(
-          libraryWhisperPath: libraryWhisperPath,
-        );
+        final WhisperLibrary generalAiSpeechToText = WhisperLibrary(libraryWhisperPath: libraryWhisperPath);
         generalAiSpeechToText._isInIsolate = true;
         await generalAiSpeechToText.ensureInitialized();
-        generalAiSpeechToText.loadWhisperModel(
-          openVinoEncoderDevice: openVinoEncoderDevice,
-          whisperModelPath: whisperModelPath,
-          isUseGpu: isUseGpu,
-          gpuDevice: gpuDevice,
-        );
+        generalAiSpeechToText.loadWhisperModel(openVinoEncoderDevice: openVinoEncoderDevice, whisperModelPath: whisperModelPath, isUseGpu: isUseGpu, gpuDevice: gpuDevice);
         final result = generalAiSpeechToText.transcribeToJson(
           fileWav: file_wav,
           isTranslate: isTranslate,
@@ -233,15 +206,11 @@ class WhisperLibrary extends WhisperLibraryBase {
     }
     final whisperModelContext = WhisperLibrary._whisperModelContext;
     if (whisperModelContext == nullptr) {
-      return {
-        "@type": "error",
-      };
+      return {"@type": "error"};
     }
     final List<double> filePcm32 = GeneralMlUtils.wavToNumpyArraywavToNumpy(fileWav);
     if (filePcm32.isEmpty) {
-      return {
-        "@type": "error",
-      };
+      return {"@type": "error"};
     }
     final pointerFilePcm32 = GeneralMlUtils.listToPointerFloat(filePcm32);
     if (_whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_is_multilingual(whisperModelContext) == 0) {
@@ -297,18 +266,11 @@ class WhisperLibrary extends WhisperLibraryBase {
       if (nProccecors > 1) {
         return WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_parallel(whisperModelContext, wparams, pointerFilePcm32, filePcm32.length, nProccecors);
       }
-      return WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full(
-        whisperModelContext,
-        wparams,
-        pointerFilePcm32,
-        filePcm32.length,
-      );
+      return WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full(whisperModelContext, wparams, pointerFilePcm32, filePcm32.length);
     }();
     filePcm32.clear();
     if (resultInference != 0) {
-      return {
-        "@type": "error",
-      };
+      return {"@type": "error"};
     }
     final int nSegments = WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_n_segments(whisperModelContext);
     String result = "";
@@ -317,13 +279,7 @@ class WhisperLibrary extends WhisperLibraryBase {
       result += text.cast<Utf8>().toDartString();
     }
 
-    final Map resultJson = {
-      "@type": "whisperTranscribe",
-      "task": wparams.translate ? "Translate" : "Transcribe",
-      "language": WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_lang_str_full(WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_lang_id(whisperModelContext)).cast<Utf8>().toDartString(),
-      "duration": (filePcm32.length / WHISPER_SAMPLE_RATE).toStringAsFixed(0),
-      "text": result.trim(),
-    };
+    final Map resultJson = {"@type": "whisperTranscribe", "task": wparams.translate ? "Translate" : "Transcribe", "language": WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_lang_str_full(WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_lang_id(whisperModelContext)).cast<Utf8>().toDartString(), "duration": (filePcm32.length / WHISPER_SAMPLE_RATE).toStringAsFixed(0), "text": result.trim()};
 
     return resultJson;
   }

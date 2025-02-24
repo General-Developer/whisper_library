@@ -5,6 +5,8 @@
 
 import 'dart:ffi' as ffi;
 
+ 
+// import 'package:ffi_universe/ffi/wasm/wasm.dart' as ffi;
 /// WhisperLibrarySharedBindingsByGeneralDeveloper Binding By General Corporation & Global Corporation & General Developer
 class WhisperLibrarySharedBindingsByGeneralDeveloper {
   /// Holds the symbol lookup function.

@@ -39,6 +39,9 @@ project(
   general_developer_whisper_shared_library
 )
 
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+
 set(WHISPER_LIBRARY_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/whisper.cpp")
 
 if(ANDROID)
@@ -49,6 +52,13 @@ set(GGML_CCACHE OFF)
 
 if(UNIX)
   set(CMAKE_BUILD_RPATH "$ORIGIN")
+endif()
+
+
+if(ANDROID)
+  set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../package/whisper_library_flutter/android/jniLibs/${ANDROID_ABI})
+elseif(UNIX)
+  set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../package/whisper_library_flutter/linux)
 endif()
 
 add_subdirectory(${WHISPER_LIBRARY_DIRECTORY} "whisper.cpp")
