@@ -111,7 +111,16 @@ void main(List<String> args) async {
 ## Example Project Use This Library
 
 
-1. [AZKA GRAM](https://github.com/azkadev/azkagram) / [Global GRAM](https://github.com/globalcorporation/global_gram_app)
+- [Whisper Application](https://github.com/General-Developer/whisper_library/tree/main/examples/whisper_app)
+    
+Minimal simple application example of using whisper library
+ 
+| Mobile                                                                                                                                  | Desktop |
+|-----------------------------------------------------------------------------------------------------------------------------------------|---------|
+| ![](https://raw.githubusercontent.com/General-Developer/whisper_library/refs/heads/main/assets/examples/whisper_app/mobile.png) | https://raw.githubusercontent.com/General-Developer/whisper_library/refs/heads/main/assets/examples/whisper_app/desktop.png        |
+
+
+- [AZKA GRAM](https://github.com/azkadev/azkagram) / [Global GRAM](https://github.com/globalcorporation/global_gram_app)
     
  **Telegram Application** with **redesign** with new some features userbot and other **features which is not officially provided on Telegram** First this project open source but we closed it to **close source** because our program is easy to read and allows other people to edit the source code and then use it for criminal acts
  
