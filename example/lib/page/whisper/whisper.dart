@@ -145,13 +145,9 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
         return Scaffold(
           appBar: AppBar(
             key: appBarGlobalKey,
-            title: TextButton(
-              child: Text(
-                "Whisper.Cpp AZKADEV",
-              ),
-              onPressed: () {
-                
-              },
+            title: Text(
+              "Whisper Library - General Developer",
+              style: context.theme.textTheme.titleLarge,
             ),
           ),
           body: RefreshIndicator(
