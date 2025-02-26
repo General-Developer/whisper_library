@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+ln --force -s /opt/whisper-app/whisper_app /usr/bin/whisper-app-app
+chmod +x /usr/bin/whisper-app-app
+
+exit 0
