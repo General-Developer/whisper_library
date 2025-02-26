@@ -54,9 +54,7 @@ void main(List<String> args) async {
     print("cant loaded");
     exit(1);
   }
-  final File fileWav = File(
-    "../../native_lib/lib/whisper.cpp/samples/jfk.wav",
-  );
+  final File fileWav = File("../../native_lib/lib/whisper.cpp/samples/jfk.wav");
   await Future.delayed(Duration(seconds: 2));
   DateTime dateTime = DateTime.now();
   final result = await whisperLibrary.transcribeToJson(

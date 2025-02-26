@@ -39,17 +39,16 @@ import 'base.dart';
 /// Check Out: https://www.youtube.com/@GENERAL_DEV
 class WhisperLibrary extends WhisperLibraryBase {
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
-  WhisperLibrary({
-    super.libraryWhisperPath,
-  });
+  WhisperLibrary({super.libraryWhisperPath});
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   @override
-  bool loadWhisperModel(
-      {String openVinoEncoderDevice = "CPU",
-      required String whisperModelPath,
-      bool isUseGpu = false,
-      int gpuDevice = 0}) {
+  bool loadWhisperModel({
+    String openVinoEncoderDevice = "CPU",
+    required String whisperModelPath,
+    bool isUseGpu = false,
+    int gpuDevice = 0,
+  }) {
     // TODO: implement loadWhisperModel
     throw UnimplementedError();
   }
