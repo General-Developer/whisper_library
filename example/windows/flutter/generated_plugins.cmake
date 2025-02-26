@@ -3,9 +3,20 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  camera_windows
+  media_kit_libs_windows_video_fork
+  media_kit_video_fork
+  permission_handler_windows
+  screen_brightness_windows
+  screen_retriever_windows
+  url_launcher_windows
+  window_manager
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
+  general_audio_flutter
+  media_kit_native_event_loop_fork
+  whisper_library_flutter
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
