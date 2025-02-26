@@ -10,3 +10,4 @@ analyzer:
     - test
     - dev
     - templates
+    - lib/packagex
