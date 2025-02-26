@@ -117,7 +117,7 @@ Minimal simple application example of using whisper library
  
 | Mobile                                                                                                                                  | Desktop |
 |-----------------------------------------------------------------------------------------------------------------------------------------|---------|
-| ![](https://raw.githubusercontent.com/General-Developer/whisper_library/refs/heads/main/assets/examples/whisper_app/mobile.png) | https://raw.githubusercontent.com/General-Developer/whisper_library/refs/heads/main/assets/examples/whisper_app/desktop.png        |
+| ![](https://raw.githubusercontent.com/General-Developer/whisper_library/refs/heads/main/assets/examples/whisper_app/mobile.png) | ![](https://raw.githubusercontent.com/General-Developer/whisper_library/refs/heads/main/assets/examples/whisper_app/desktop.png)        |
 
 
 - [AZKA GRAM](https://github.com/azkadev/azkagram) / [Global GRAM](https://github.com/globalcorporation/global_gram_app)
