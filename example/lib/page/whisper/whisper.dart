@@ -38,6 +38,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:io';
 
 import 'package:example/core/core.dart';
+import 'package:example/scheme/scheme/application_whisper_library_database.dart';
 import 'package:flutter/material.dart';
 import 'package:general_audio/dart/general_audio/core/general_audio_recorder/general_audio_recorder.dart';
 import 'package:general_framework/flutter/loading/loading_controller.dart';
@@ -76,6 +77,8 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
       playerController.stop();
     } catch (e) {}
     playerController.dispose();
+    transcribeFromExampleJFKToJson.clear();
+    transcribeFromRecordToJson.clear();
     super.dispose();
   }
 
@@ -91,7 +94,12 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
       isLoading = true;
     });
     await Future(() async {
-      loadWhisperModel(whisperModel: File(""));
+      final ApplicationWhisperLibraryDatabase applicationWhisperLibraryDatabase = getApplicationWhisperLibraryDatabase();
+
+      loadWhisperModel(
+        whisperModel: File(applicationWhisperLibraryDatabase.whisper_model_path ?? ""),
+      );
+      loadAudioFile(fileAudio: File(applicationWhisperLibraryDatabase.file_audio_path ?? ""));
     });
     setState(() {
       isLoading = false;
@@ -114,6 +122,20 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
     setState(() {
       modelSize = whisperModel.statSync().size;
       modelName = path.basename(whisperModel.path);
+    });
+    return true;
+  }
+
+  bool loadAudioFile({
+    required File fileAudio,
+  }) {
+    if (fileAudio.existsSync() == false) {
+      return false;
+    }
+    setState(() {
+      fileAudioWav = fileAudio;
+      fileAudioSize = fileAudio.statSync().size;
+      fileAudioName = path.basename(fileAudio.path);
     });
     return true;
   }
@@ -228,6 +250,13 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
                                       );
                                       return;
                                     }
+
+                                    /// save to application settings
+                                    {
+                                      final ApplicationWhisperLibraryDatabase applicationWhisperLibraryDatabase = getApplicationWhisperLibraryDatabase();
+                                      applicationWhisperLibraryDatabase.whisper_model_path = file.path;
+                                      saveApplicationWhisperLibraryDatabase();
+                                    }
                                     final bool isLoadWhisperModel = loadWhisperModel(whisperModel: file);
                                     context.showSnackBar(isLoadWhisperModel ? "Succes Load Model Whisper" : "Failed Load Model Whisper");
                                   },
@@ -268,9 +297,12 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
                               onPressed: () {
                                 handleFunction(
                                   onFunction: (context, statefulWidget) async {
-                                    final file = await ExampleClientFlutter.pickFile(dialogTitle: "Audio File Wav", allowedExtensions: [
-                                      "wav",
-                                    ],);
+                                    final file = await ExampleClientFlutter.pickFile(
+                                      dialogTitle: "Audio File Wav",
+                                      allowedExtensions: [
+                                        "wav",
+                                      ],
+                                    );
                                     if (file == null) {
                                       context.showAlertGeneralFramework(
                                         alertGeneralFrameworkOptions: AlertGeneralFrameworkOptions(
@@ -283,11 +315,14 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
                                       return;
                                     }
 
-                                    setState(() {
-                                      fileAudioWav =file;
-                                      fileAudioSize = file.statSync().size;
-                                      fileAudioName = path.basename(file.path);
-                                    });
+                                    /// save to application settings
+                                    {
+                                      final ApplicationWhisperLibraryDatabase applicationWhisperLibraryDatabase = getApplicationWhisperLibraryDatabase();
+                                      applicationWhisperLibraryDatabase.file_audio_path = file.path;
+                                      saveApplicationWhisperLibraryDatabase();
+                                    }
+
+                                    loadAudioFile(fileAudio: file);
                                   },
                                 );
                               },

@@ -98,7 +98,7 @@ class _MainAppState extends State<MainApp> with GeneralLibFlutterStatefulWidget 
     });
     await Future(() async {
       loadingGeneralFrameworkController.update(loadingText: "Starting Initialized App");
-      await ExampleClientFlutter.generalFrameworkClientFlutterAppDirectory.ensureInitialized(
+      await ExampleClientFlutter.initialized(
         context: context,
         onLoading: (text) {
           loadingGeneralFrameworkController.update(loadingText: text);
