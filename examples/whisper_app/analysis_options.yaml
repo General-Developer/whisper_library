@@ -1,0 +1,13 @@
+include: package:flutter_lints/flutter.yaml
+linter:
+  rules:
+    - public_member_api_docs
+    - require_trailing_commas
+formatter:
+  page_width: 9999999999
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+    - lib/packagex

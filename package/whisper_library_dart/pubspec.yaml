@@ -8,13 +8,13 @@ topics:
   - 'whisper'
   - 'speech-to-text'
 environment:
-  sdk: '>=3.7.0 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies:
   general_lib: '^0.0.66'
   ffi: '^2.1.0'
   path: '^1.9.0'
   general_ml: '^0.0.2'
-  ffi_universe: '^0.0.4'
+  ffi_universe: '^0.0.6'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
