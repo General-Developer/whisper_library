@@ -15,6 +15,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
   general_audio_flutter
+  ggml_library_flutter
   media_kit_native_event_loop_fork
   whisper_library_flutter
 )

@@ -32,10 +32,13 @@ dependencies:
   general_audio_flutter: '^0.0.2'
   whisper_library_dart: '^0.0.7'
   whisper_library_flutter: '^0.0.7'
+  ggml_library_flutter: '^0.0.8'
+  file_picker: '^8.3.5'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
   flutter_lints: '^5.0.0'
+  msix: '^3.16.8'
 flutter:
   uses-material-design: true
 project:
@@ -43,3 +46,33 @@ project:
 dependency_overrides:
   pointycastle: '3.8.0'
   mime: '^2.0.0'
+packagex:
+  name: 'example'
+  is_without_platform_name: true
+  is_app_auto_clean_up_folder: true
+  flutter_build_arguments:
+    - '--split-per-abi'
+    - '--build-name'
+    - '0.0.0'
+    - '--build-number'
+    - '0'
+    - '--obfuscate'
+    - '--split-debug-info'
+    - 'packagex-build-debug'
+  dart_compile_exe_arguments:
+    - '--save-debugging-info=packagex-compile-debug'
+  uploads:
+    - platform_type: 'github'
+      github_username: 'general-developer'
+      github_tag: 'release'
+      github_is_org: true
+      github_repository_name: 'example'
+  packages:
+    - dart_target: 'example'
+      flutter_target: 'main'
+      dart_name: 'example'
+      flutter_name: 'example'
+      output_name: 'example'
+msix_config:
+  display_name: 'example'
+  install_certificate: false

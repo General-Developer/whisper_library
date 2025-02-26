@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, use_build_context_synchronously, empty_catches
+// ignore_for_file: public_member_api_docs, use_build_context_synchronously, empty_catches, unnecessary_brace_in_string_interps
 
 /* <!-- START LICENSE -->
 
@@ -42,6 +42,7 @@ import 'package:flutter/material.dart';
 import 'package:general_audio/dart/general_audio/core/general_audio_recorder/general_audio_recorder.dart';
 import 'package:general_framework/flutter/loading/loading_controller.dart';
 import 'package:general_framework/flutter/loading/loading_core.dart';
+import 'package:general_framework/flutter/ui/alert/core.dart';
 import 'package:general_framework/flutter/widget/widget.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -90,28 +91,39 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
       isLoading = true;
     });
     await Future(() async {
-      final File fileModel = () {
-        if (Dart.isLinux) {
-          return File("../../../../big-data/whisper-ggml/ggml-small.bin");
-        }
-        return File(path.join(ExampleClientFlutter.generalFrameworkClientFlutterAppDirectory.app_support_directory.path, "ggml-small.bin"));
-      }();
-      final bool isLoadedModel = ExampleClientFlutter.whisperLibrary.loadWhisperModel(
-        whisperModelPath: fileModel.path,
-      );
-      if (isLoadedModel == false) {
-        context.showSnackBar("Model Cant Loaded");
-      }
-      setState(() {
-        modelSize = fileModel.statSync().size;
-      });
+      loadWhisperModel(whisperModel: File(""));
     });
     setState(() {
       isLoading = false;
     });
   }
 
+  bool loadWhisperModel({
+    required File whisperModel,
+  }) {
+    if (whisperModel.existsSync() == false) {
+      return false;
+    }
+    final bool isLoadedModel = ExampleClientFlutter.whisperLibrary.loadWhisperModel(
+      whisperModelPath: whisperModel.path,
+    );
+    if (isLoadedModel == false) {
+      context.showSnackBar("Model Cant Loaded");
+      return false;
+    }
+    setState(() {
+      modelSize = whisperModel.statSync().size;
+      modelName = path.basename(whisperModel.path);
+    });
+    return true;
+  }
+
   int modelSize = 0;
+  String modelName = "";
+
+  File fileAudioWav = File("");
+  int fileAudioSize = 0;
+  String fileAudioName = "";
 
   @override
   Future<void> refresh() async {
@@ -191,9 +203,37 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
                           MenuContainerGeneralFrameworkWidget.lisTile(
                             context: context,
                             contentPadding: EdgeInsets.all(5),
-                            title: "Model Size",
-                            subtitle: FileSize.filesize(
-                              size: modelSize,
+                            title: "Model",
+                            subtitle: [
+                              "- Model Name: ${modelName}",
+                              "- Model Size: ${FileSize.filesize(
+                                size: modelSize,
+                              )}",
+                            ].join("\n"),
+                            trailing: IconButton(
+                              onPressed: () {
+                                handleFunction(
+                                  onFunction: (context, statefulWidget) async {
+                                    final file = await ExampleClientFlutter.pickFile(
+                                      dialogTitle: "Whisper Model",
+                                    );
+                                    if (file == null) {
+                                      context.showAlertGeneralFramework(
+                                        alertGeneralFrameworkOptions: AlertGeneralFrameworkOptions(
+                                          title: "Failed Load Model Whisper",
+                                          builder: (context, alertGeneralFrameworkOptions) {
+                                            return "Coba lagi";
+                                          },
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    final bool isLoadWhisperModel = loadWhisperModel(whisperModel: file);
+                                    context.showSnackBar(isLoadWhisperModel ? "Succes Load Model Whisper" : "Failed Load Model Whisper");
+                                  },
+                                );
+                              },
+                              icon: Icon(Icons.create),
                             ),
                           ),
                         ];
@@ -209,11 +249,51 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
                       titleBuilder: (context) {
                         return MenuContainerGeneralFrameworkWidget.title(
                           context: context,
-                          title: "Transcribe From Example JFK",
+                          title: "Transcribe From File",
                         );
                       },
                       menuBuilder: (context) {
                         return [
+                          MenuContainerGeneralFrameworkWidget.lisTile(
+                            context: context,
+                            contentPadding: EdgeInsets.all(5),
+                            title: "File",
+                            subtitle: [
+                              "- File Name: ${fileAudioName}",
+                              "- File Size: ${FileSize.filesize(
+                                size: fileAudioSize,
+                              )}",
+                            ].join("\n"),
+                            trailing: IconButton(
+                              onPressed: () {
+                                handleFunction(
+                                  onFunction: (context, statefulWidget) async {
+                                    final file = await ExampleClientFlutter.pickFile(dialogTitle: "Audio File Wav", allowedExtensions: [
+                                      "wav",
+                                    ],);
+                                    if (file == null) {
+                                      context.showAlertGeneralFramework(
+                                        alertGeneralFrameworkOptions: AlertGeneralFrameworkOptions(
+                                          title: "Failed Load Audio Wav",
+                                          builder: (context, alertGeneralFrameworkOptions) {
+                                            return "Coba lagi";
+                                          },
+                                        ),
+                                      );
+                                      return;
+                                    }
+
+                                    setState(() {
+                                      fileAudioWav =file;
+                                      fileAudioSize = file.statSync().size;
+                                      fileAudioName = path.basename(file.path);
+                                    });
+                                  },
+                                );
+                              },
+                              icon: Icon(Icons.create),
+                            ),
+                          ),
                           MenuContainerGeneralFrameworkWidget.lisTile(
                             context: context,
                             contentPadding: EdgeInsets.all(5),
@@ -222,16 +302,8 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
                             onTap: () {
                               handleFunction(
                                 onFunction: (context, statefulWidget) async {
-                                  final File fileWav = File(
-                                    () {
-                                      if (Dart.isLinux) {
-                                        return "../../../../native_lib/lib/whisper.cpp/samples/jfk.wav";
-                                      }
-                                      return path.join(ExampleClientFlutter.generalFrameworkClientFlutterAppDirectory.app_support_directory.path, "jfk.wav");
-                                    }(),
-                                  );
-                                  if (fileWav.existsSync() == false) {
-                                    context.showSnackBar("File: Not Found ${path.basename(fileWav.path)}");
+                                  if (fileAudioWav.existsSync() == false) {
+                                    context.showSnackBar("File: Not Found ${path.basename(fileAudioWav.path)}");
                                     return;
                                   }
                                   transcribeFromExampleJFKToJson.clear();
@@ -241,7 +313,7 @@ class _SpeechToTextPageState extends State<WhisperSpeechToTextPage> with General
                                   DateTime dateTime = DateTime.now();
                                   try {
                                     transcribeFromExampleJFKToJson = await ExampleClientFlutter.whisperLibrary.transcribeToJson(
-                                      fileWav: fileWav.path,
+                                      fileWav: fileAudioWav.path,
                                       useCountProccecors: 1,
                                       useCountThread: 4,
                                     );
