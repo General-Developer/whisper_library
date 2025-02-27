@@ -133,10 +133,10 @@ packages:
     dependency: "direct main"
     description:
       name: ffi_universe
-      sha256: ed16561f8a925ff3fd6de0c0b39a7f41568abfd1027531c82682cb19c4229fb2
+      sha256: "39b414da203ecbdb857ddaf19c0d6bbd823b8f9ab0c5eedcec3b75551c6cf078"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.6"
+    version: "0.0.7"
   ffigen:
     dependency: "direct dev"
     description:

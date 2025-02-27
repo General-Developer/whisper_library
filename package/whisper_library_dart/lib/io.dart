@@ -50,15 +50,14 @@ class WhisperLibrary extends WhisperLibraryBase {
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   WhisperLibrary({String? libraryWhisperPath})
-    : super(
-        libraryWhisperPath:
-            libraryWhisperPath ??
-            WhisperLibraryBase.getLibraryWhisperPathDefault(),
-      );
+      : super(
+          libraryWhisperPath: libraryWhisperPath ??
+              WhisperLibraryBase.getLibraryWhisperPathDefault(),
+        );
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static late final WhisperLibrarySharedBindingsByGeneralDeveloper
-  _whisperLibraryDartSharedBindingsByGeneralDeveloper;
+      _whisperLibraryDartSharedBindingsByGeneralDeveloper;
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static Pointer<whisper_context> _whisperModelContext = nullptr;
@@ -87,8 +86,8 @@ class WhisperLibrary extends WhisperLibraryBase {
     try {
       _whisperLibraryDartSharedBindingsByGeneralDeveloper =
           WhisperLibrarySharedBindingsByGeneralDeveloper(
-            await FFIUniverse.open(path: libraryWhisperPath),
-          );
+        await FFIUniverse.open(path: libraryWhisperPath),
+      );
       _isDeviceSupport = true;
     } catch (e) {
       print(e);
@@ -163,31 +162,30 @@ class WhisperLibrary extends WhisperLibraryBase {
     {
       WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
           .whisper_log_set(
-            Pointer.fromFunction(ggmlLogCallbackFunction),
-            "log".toNativeUtf8().cast<Void>(),
-          );
+        Pointer.fromFunction(ggmlLogCallbackFunction),
+        "log".toNativeUtf8().cast<Void>(),
+      );
       WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
           .ggml_log_set(
-            Pointer.fromFunction(ggmlLogCallbackFunction),
-            "log".toNativeUtf8().cast<Void>(),
-          );
+        Pointer.fromFunction(ggmlLogCallbackFunction),
+        "log".toNativeUtf8().cast<Void>(),
+      );
     }
 
     WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
         .ggml_backend_load_all();
 
-    final cparams =
-        _whisperLibraryDartSharedBindingsByGeneralDeveloper
-            .whisper_context_default_params();
+    final cparams = _whisperLibraryDartSharedBindingsByGeneralDeveloper
+        .whisper_context_default_params();
     cparams.use_gpu = WhisperLibrary._isUseGpu;
     cparams.gpu_device = WhisperLibrary._gpuDevice;
 
     final whisperModelContext =
         _whisperLibraryDartSharedBindingsByGeneralDeveloper
             .whisper_init_from_file_with_params(
-              whisperModelPathNative,
-              cparams,
-            );
+      whisperModelPathNative,
+      cparams,
+    );
     WhisperLibrary._whisperModelContext = whisperModelContext;
     if (whisperModelContext.address == 0) {
       _whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_free(
@@ -199,11 +197,11 @@ class WhisperLibrary extends WhisperLibraryBase {
         WhisperLibrary._openVinoEncoderDevice.toNativeUtf8().cast<Char>();
     _whisperLibraryDartSharedBindingsByGeneralDeveloper
         .whisper_ctx_init_openvino_encoder(
-          whisperModelContext,
-          nullptr,
-          openVinoEncoderDeviceNative,
-          nullptr,
-        );
+      whisperModelContext,
+      nullptr,
+      openVinoEncoderDeviceNative,
+      nullptr,
+    );
     return true;
   }
 
@@ -296,8 +294,8 @@ class WhisperLibrary extends WhisperLibraryBase {
     int maxContext = -1;
     final wparams = _whisperLibraryDartSharedBindingsByGeneralDeveloper
         .whisper_full_default_params(
-          whisper_sampling_strategy.WHISPER_SAMPLING_GREEDY,
-        );
+      whisper_sampling_strategy.WHISPER_SAMPLING_GREEDY,
+    );
     final languageNative = language.toNativeUtf8().cast<Char>();
     wparams.print_realtime = false;
     wparams.print_progress = false;
@@ -335,20 +333,20 @@ class WhisperLibrary extends WhisperLibraryBase {
         return WhisperLibrary
             ._whisperLibraryDartSharedBindingsByGeneralDeveloper
             .whisper_full_parallel(
-              whisperModelContext,
-              wparams,
-              pointerFilePcm32,
-              filePcm32.length,
-              nProccecors,
-            );
+          whisperModelContext,
+          wparams,
+          pointerFilePcm32,
+          filePcm32.length,
+          nProccecors,
+        );
       }
       return WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
           .whisper_full(
-            whisperModelContext,
-            wparams,
-            pointerFilePcm32,
-            filePcm32.length,
-          );
+        whisperModelContext,
+        wparams,
+        pointerFilePcm32,
+        filePcm32.length,
+      );
     }();
     filePcm32.clear();
     if (resultInference != 0) {
@@ -368,15 +366,14 @@ class WhisperLibrary extends WhisperLibraryBase {
     final Map resultJson = {
       "@type": "whisperTranscribe",
       "task": wparams.translate ? "Translate" : "Transcribe",
-      "language":
-          WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
-              .whisper_lang_str_full(
-                WhisperLibrary
-                    ._whisperLibraryDartSharedBindingsByGeneralDeveloper
-                    .whisper_full_lang_id(whisperModelContext),
-              )
-              .cast<Utf8>()
-              .toDartString(),
+      "language": WhisperLibrary
+          ._whisperLibraryDartSharedBindingsByGeneralDeveloper
+          .whisper_lang_str_full(
+            WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
+                .whisper_full_lang_id(whisperModelContext),
+          )
+          .cast<Utf8>()
+          .toDartString(),
       "duration": (filePcm32.length / WHISPER_SAMPLE_RATE).toStringAsFixed(0),
       "text": result.trim(),
     };
