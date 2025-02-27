@@ -30,9 +30,9 @@ dependencies:
   general_system_device: '^0.0.51'
   general_audio: '^0.0.2'
   general_audio_flutter: '^0.0.2'
-  whisper_library_dart: '^0.0.8'
-  whisper_library_flutter: '^0.0.8'
-  ggml_library_flutter: '^0.0.9'
+  whisper_library_dart: '^0.0.9'
+  whisper_library_flutter: '^0.0.9'
+  ggml_library_flutter: '^0.0.10'
   file_picker: '^8.3.5'
 dev_dependencies:
   flutter_test:
