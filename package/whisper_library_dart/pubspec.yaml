@@ -1,6 +1,6 @@
 name: 'whisper_library_dart'
 description: 'Whisper Is Library for transcribe sound wav AKA Speech To Text Or Extract Text From Audio'
-version: '0.0.7'
+version: '0.0.8'
 topics:
   - 'ggml'
   - 'artificial-intelligence'
@@ -14,7 +14,7 @@ dependencies:
   ffi: '^2.1.0'
   path: '^1.9.0'
   general_ml: '^0.0.2'
-  ffi_universe: '^0.0.6'
+  ffi_universe: '^0.0.7'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
