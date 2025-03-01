@@ -1,0 +1,35 @@
+name: Release Examples
+on: 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release-examples:
+    name: Release Examples
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          # depth: 1
+        
+      - name: General Developer Action
+        uses: General-Developer/general-developer-action@0.0.7
+        with:
+          flutter_channel: stable
+          flutter_version: 3.29.0
+          is_use_cache: true
+          flutter_cache_key: "flutter-sdk-${{ runner.os }}-3.29.0"
+          # install_dependencies_developer: "true" # installing git ffmpeg mpv cmake cpp aand more
+          # install_java: "true" # Instalaling java
+          
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        shell: bash
+        working-directory: examples/whisper_app
+        run: |
+          flutter pub get
+          dart run packagex --command build
+        
