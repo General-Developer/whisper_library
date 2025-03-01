@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: false
-          # depth: 1
+          
         
       - name: General Developer Action
         uses: General-Developer/general-developer-action@0.0.8
@@ -24,8 +24,6 @@ jobs:
           install_dependencies_developer: "true" # installing git ffmpeg mpv cmake cpp aand more
           install_java: "true" # Instalaling java
           
-          
-      
       - name: Build Examples Desktop Whisper App
         shell: bash
         working-directory: examples/whisper_app
