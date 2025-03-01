@@ -62,10 +62,10 @@ packagex:
     - '--save-debugging-info=packagex-compile-debug'
   uploads:
     - platform_type: 'github'
-      github_username: 'archivon-apps-stores'
+      github_username: 'General-Developer'
       github_tag: 'release'
-      github_is_org: false
-      github_repository_name: 'whisper_app'
+      github_is_org: true
+      github_repository_name: 'whisper_library'
   packages:
     - dart_target: 'whisper_app'
       flutter_target: 'main'

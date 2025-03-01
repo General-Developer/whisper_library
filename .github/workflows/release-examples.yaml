@@ -22,14 +22,29 @@ jobs:
           is_use_cache: true
           flutter_cache_key: "flutter-sdk-${{ runner.os }}-3.29.0"
           install_dependencies_developer: "true" # installing git ffmpeg mpv cmake cpp aand more
-          # install_java: "true" # Instalaling java
+          install_java: "true" # Instalaling java
+          
           
       
-      # General Bot App
-      - name: Build Examples Whisper App
+      - name: Build Examples Desktop Whisper App
         shell: bash
         working-directory: examples/whisper_app
+        env:
+          packagex_github_token: ${{ secrets.PUBLISHER_GITHUB_TOKEN }}
         run: |
           flutter pub get
-          dart run packagex --command build
+          dart run packagex --command build --platform linux
+          dart run packagex --command publish
+        
+      - name: Build Examples Mobile Whisper App
+        shell: bash
+        working-directory: examples/whisper_app
+        env:
+          packagex_github_token: ${{ secrets.PUBLISHER_GITHUB_TOKEN }}
+        run: |
+          flutter pub get
+          dart run packagex --command build --platform android
+          rm -rf build/packagex/*-armeabi-v7a-release.apk
+          rm -rf build/packagex/*-x86_64-release.apk
+          dart run packagex --command publish
         
