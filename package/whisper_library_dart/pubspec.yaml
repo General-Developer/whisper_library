@@ -10,17 +10,17 @@ topics:
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  general_lib: '^0.0.66'
-  ffi: '^2.1.0'
+  general_lib: '^0.0.71'
+  ffi: '^2.1.4'
   path: '^1.9.0'
   general_ml: '^0.0.2'
-  ffi_universe: '^0.0.7'
+  ffi_universe: '^0.0.8'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
-  ffigen: '^15.0.0'
+  ffigen: '^17.0.0'
 dependency_overrides:
-  pointycastle: '3.8.0'
+  pointycastle: '4.0.0'
   mime: '^2.0.0'
 flutter:
   uses-material-design: true
