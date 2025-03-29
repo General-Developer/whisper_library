@@ -51,13 +51,11 @@ class WhisperLibrary extends WhisperLibraryBase {
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   WhisperLibrary({String? libraryWhisperPath})
       : super(
-          libraryWhisperPath: libraryWhisperPath ??
-              WhisperLibraryBase.getLibraryWhisperPathDefault(),
+          libraryWhisperPath: libraryWhisperPath ?? WhisperLibraryBase.getLibraryWhisperPathDefault(),
         );
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
-  static late final WhisperLibrarySharedBindingsByGeneralDeveloper
-      _whisperLibraryDartSharedBindingsByGeneralDeveloper;
+  static late final WhisperLibrarySharedBindingsByGeneralDeveloper _whisperLibraryDartSharedBindingsByGeneralDeveloper;
 
   /// Check Out: https://www.youtube.com/@GENERAL_DEV
   static Pointer<whisper_context> _whisperModelContext = nullptr;
@@ -84,8 +82,7 @@ class WhisperLibrary extends WhisperLibraryBase {
       return;
     }
     try {
-      _whisperLibraryDartSharedBindingsByGeneralDeveloper =
-          WhisperLibrarySharedBindingsByGeneralDeveloper(
+      _whisperLibraryDartSharedBindingsByGeneralDeveloper = WhisperLibrarySharedBindingsByGeneralDeveloper(
         await FFIUniverse.open(path: libraryWhisperPath),
       );
       _isDeviceSupport = true;
@@ -147,8 +144,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     if (isDeviceSupport() == false || isCrash()) {
       return false;
     }
-    final whisperModelPathNative =
-        WhisperLibrary._whisperModelPath.toNativeUtf8().cast<Char>();
+    final whisperModelPathNative = WhisperLibrary._whisperModelPath.toNativeUtf8().cast<Char>();
     {
       final whisperModelContext = WhisperLibrary._whisperModelContext;
       if (whisperModelContext != nullptr) {
@@ -160,29 +156,23 @@ class WhisperLibrary extends WhisperLibraryBase {
     }
 
     {
-      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
-          .whisper_log_set(
+      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_log_set(
         Pointer.fromFunction(ggmlLogCallbackFunction),
         "log".toNativeUtf8().cast<Void>(),
       );
-      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
-          .ggml_log_set(
+      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.ggml_log_set(
         Pointer.fromFunction(ggmlLogCallbackFunction),
         "log".toNativeUtf8().cast<Void>(),
       );
     }
 
-    WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
-        .ggml_backend_load_all();
+    WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.ggml_backend_load_all();
 
-    final cparams = _whisperLibraryDartSharedBindingsByGeneralDeveloper
-        .whisper_context_default_params();
+    final cparams = _whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_context_default_params();
     cparams.use_gpu = WhisperLibrary._isUseGpu;
     cparams.gpu_device = WhisperLibrary._gpuDevice;
 
-    final whisperModelContext =
-        _whisperLibraryDartSharedBindingsByGeneralDeveloper
-            .whisper_init_from_file_with_params(
+    final whisperModelContext = _whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_init_from_file_with_params(
       whisperModelPathNative,
       cparams,
     );
@@ -193,10 +183,8 @@ class WhisperLibrary extends WhisperLibraryBase {
       );
       return false;
     }
-    final openVinoEncoderDeviceNative =
-        WhisperLibrary._openVinoEncoderDevice.toNativeUtf8().cast<Char>();
-    _whisperLibraryDartSharedBindingsByGeneralDeveloper
-        .whisper_ctx_init_openvino_encoder(
+    final openVinoEncoderDeviceNative = WhisperLibrary._openVinoEncoderDevice.toNativeUtf8().cast<Char>();
+    _whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_ctx_init_openvino_encoder(
       whisperModelContext,
       nullptr,
       openVinoEncoderDeviceNative,
@@ -232,8 +220,7 @@ class WhisperLibrary extends WhisperLibraryBase {
         return "";
       }();
       final libraryWhisperPath = this.libraryWhisperPath;
-      final String openVinoEncoderDevice =
-          WhisperLibrary._openVinoEncoderDevice;
+      final String openVinoEncoderDevice = WhisperLibrary._openVinoEncoderDevice;
       final String whisperModelPath = WhisperLibrary._whisperModelPath;
       final bool isUseGpu = WhisperLibrary._isUseGpu;
       final int gpuDevice = WhisperLibrary._gpuDevice;
@@ -273,9 +260,7 @@ class WhisperLibrary extends WhisperLibraryBase {
       return {"@type": "error"};
     }
     final pointerFilePcm32 = GeneralMlUtils.listToPointerFloat(filePcm32);
-    if (_whisperLibraryDartSharedBindingsByGeneralDeveloper
-            .whisper_is_multilingual(whisperModelContext) ==
-        0) {
+    if (_whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_is_multilingual(whisperModelContext) == 0) {
       language = "en";
       isTranslate = false;
     }
@@ -292,8 +277,7 @@ class WhisperLibrary extends WhisperLibraryBase {
       return useCountProccecors;
     }();
     int maxContext = -1;
-    final wparams = _whisperLibraryDartSharedBindingsByGeneralDeveloper
-        .whisper_full_default_params(
+    final wparams = _whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_default_params(
       whisper_sampling_strategy.WHISPER_SAMPLING_GREEDY,
     );
     final languageNative = language.toNativeUtf8().cast<Char>();
@@ -307,8 +291,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     wparams.detect_language = false;
     wparams.n_threads = nThreads;
     wparams.debug_mode = false;
-    wparams.n_max_text_ctx =
-        (maxContext >= 0) ? maxContext : wparams.n_max_text_ctx;
+    wparams.n_max_text_ctx = (maxContext >= 0) ? maxContext : wparams.n_max_text_ctx;
     wparams.offset_ms = 0;
     wparams.duration_ms = 0;
     wparams.thold_pt = 0.01;
@@ -330,9 +313,7 @@ class WhisperLibrary extends WhisperLibraryBase {
     wparams.suppress_nst = true;
     final int resultInference = () {
       if (nProccecors > 1) {
-        return WhisperLibrary
-            ._whisperLibraryDartSharedBindingsByGeneralDeveloper
-            .whisper_full_parallel(
+        return WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_parallel(
           whisperModelContext,
           wparams,
           pointerFilePcm32,
@@ -340,8 +321,7 @@ class WhisperLibrary extends WhisperLibraryBase {
           nProccecors,
         );
       }
-      return WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
-          .whisper_full(
+      return WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full(
         whisperModelContext,
         wparams,
         pointerFilePcm32,
@@ -352,25 +332,19 @@ class WhisperLibrary extends WhisperLibraryBase {
     if (resultInference != 0) {
       return {"@type": "error"};
     }
-    final int nSegments = WhisperLibrary
-        ._whisperLibraryDartSharedBindingsByGeneralDeveloper
-        .whisper_full_n_segments(whisperModelContext);
+    final int nSegments = WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_n_segments(whisperModelContext);
     String result = "";
     for (int i = 0; i < nSegments; ++i) {
-      final text = WhisperLibrary
-          ._whisperLibraryDartSharedBindingsByGeneralDeveloper
-          .whisper_full_get_segment_text(whisperModelContext, i);
+      final text = WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_get_segment_text(whisperModelContext, i);
       result += text.cast<Utf8>().toDartString();
     }
 
     final Map resultJson = {
       "@type": "whisperTranscribe",
       "task": wparams.translate ? "Translate" : "Transcribe",
-      "language": WhisperLibrary
-          ._whisperLibraryDartSharedBindingsByGeneralDeveloper
+      "language": WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
           .whisper_lang_str_full(
-            WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
-                .whisper_full_lang_id(whisperModelContext),
+            WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_full_lang_id(whisperModelContext),
           )
           .cast<Utf8>()
           .toDartString(),
@@ -390,8 +364,7 @@ class WhisperLibrary extends WhisperLibraryBase {
 
     final whisperModelContext = WhisperLibrary._whisperModelContext;
     if (whisperModelContext != nullptr) {
-      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper
-          .whisper_free(whisperModelContext);
+      WhisperLibrary._whisperLibraryDartSharedBindingsByGeneralDeveloper.whisper_free(whisperModelContext);
     }
   }
 
