@@ -14,35 +14,38 @@ funding:
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
+  cupertino_icons: '^1.0.8'
+  file_picker: '^9.0.2'
   flutter:
     sdk: 'flutter'
-  cupertino_icons: '^1.0.8'
-  general_lib: '^0.0.71'
-  general_lib_flutter: '^0.0.42'
-  packagex: '^1.0.3'
-  general_framework: '^0.0.31'
+  general_audio_flutter: '^0.0.0'
+  general_universe: '^0.0.0'
+  general_universe_flutter: '^0.0.0'
+  ggml_library_flutter: '^0.0.10'
+  media_universe_flutter: '^0.0.0'
+  packagex: '^0.0.0'
   path: '^1.9.0'
-  general_system_device: '^0.0.56'
-  general_audio: '^0.0.2'
-  general_audio_flutter: '^0.0.2'
   whisper_library_dart: '^0.0.9'
   whisper_library_flutter: '^0.0.9'
-  ggml_library_flutter: '^0.0.10'
-  file_picker: '^9.0.2'
-  media_universe: '^0.0.3'
-  media_universe_flutter: '^0.0.3'
 dev_dependencies:
+  flutter_lints: '^5.0.0'
   flutter_test:
     sdk: 'flutter'
-  flutter_lints: '^5.0.0'
   msix: '^3.16.8'
 flutter:
   uses-material-design: true
 project:
   type: ''
+  is_use_direct_package: false
+  is_private: false
+  developers:
+    - username: ''
+      note: ''
+      social_medias:
+        - 'https://github.com'
 dependency_overrides:
-  pointycastle: '4.0.0'
   mime: '^2.0.0'
+  pointycastle: '^4.0.0'
 packagex:
   name: 'whisper_app'
   is_without_platform_name: true
